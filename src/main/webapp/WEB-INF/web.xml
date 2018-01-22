@@ -25,21 +25,7 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- spring 配置Listener-->
-
-    <!-- needed for ContextLoaderListener -->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:/resource/spring-core.xml</param-value>
-    </context-param>
-
-    <!-- Bootstraps the root web application context before servlet initialization -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
-    <!-- springmvc配置dispatcherServlet -->
-
+    <!-- springmvc配置DispatcherServlet -->
     <!-- 入口是前端控制器 -->
     <servlet>
         <servlet-name>springDispatcherServlet</servlet-name>
@@ -47,12 +33,10 @@
         </servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:/resource/spring-mvc.xml</param-value>
+            <param-value>classpath:/resources/spring-mvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
-    <!-- Map all requests to the DispatcherServlet for handling -->
     <servlet-mapping>
         <servlet-name>springDispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>

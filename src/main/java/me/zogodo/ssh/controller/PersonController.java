@@ -1,9 +1,7 @@
 package me.zogodo.ssh.controller;
 
-import org.codehaus.jackson.map.ObjectMapper;
-
+import me.zogodo.ssh.db.PersonServer;
 import me.zogodo.ssh.entity.Person;
-import me.zogodo.ssh.service.PersonService;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,9 +9,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.codehaus.jackson.map.ObjectMapper;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @SessionAttributes(value = "username")
@@ -21,13 +19,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/person")
 public class PersonController
 {
-    @Autowired
-    public PersonService personService;
-
     @RequestMapping(value = "/main")
     public String mian(Map<String, Object> map)
     {
-        map.put("personlist", personService.getPersons());
+        map.put("personlist", PersonServer.me.getAllPersons());
         return "main";
     }
 
@@ -35,7 +30,7 @@ public class PersonController
     public void saveperson(HttpServletResponse response, Person person) throws IOException
     {
         response.setContentType("text/html;charset=utf-8");
-        personService.addPerson(person);
+        PersonServer.me.addPerson(person);
         response.getWriter().print("添加成功");
     }
 
@@ -44,7 +39,7 @@ public class PersonController
                                  @RequestParam(value = "id") int id) throws IOException
     {
         response.setContentType("text/html;charset=utf-8");
-        personService.deletePersonById(id);
+        PersonServer.me.deletePersonById(id);
         response.getWriter().print("删除成功");
     }
 
@@ -52,7 +47,7 @@ public class PersonController
     public void one(HttpServletResponse response,  @PathVariable("id") int id) throws IOException
     {
         response.setContentType("text/html;charset=utf-8");
-        Person person = personService.getPersonById(id);
+        Person person = PersonServer.me.getPersonById(id);
         ObjectMapper mapperObj = new ObjectMapper();
         String jsonStr = mapperObj.writeValueAsString(person);
         //System.out.println(jsonStr);
@@ -62,7 +57,7 @@ public class PersonController
     @RequestMapping(value = "/all")
     public void list(HttpServletResponse response) throws IOException
     {
-        List<Person> personlist = personService.getPersons();
+        List<Person> personlist = PersonServer.me.getAllPersons();
         ObjectMapper mapperObj = new ObjectMapper();
         String jsonStr = mapperObj.writeValueAsString(personlist);
         //System.out.println(jsonStr);
@@ -72,7 +67,7 @@ public class PersonController
     @RequestMapping(value = "/test", method = RequestMethod.POST)
     public void test(Map<String, Object> map, HttpServletResponse response, @RequestParam(value = "sql") String sql) throws IOException
     {
-        List<Person> lst = personService.find(sql);
+        List<Person> lst = PersonServer.me.find(sql);
         map.put("lst", lst);
     }
 }
