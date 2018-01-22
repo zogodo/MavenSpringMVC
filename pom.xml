@@ -9,9 +9,7 @@
     <name>mvc Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <properties>
-        <jstl.version>1.2</jstl.version>
         <spring.version>4.0.5.RELEASE</spring.version>
-        <hibernate.version>4.3.10.Final</hibernate.version>
     </properties>
 
     <dependencies>
@@ -31,7 +29,7 @@
             <version>7.0.78</version>
         </dependency>
 
-        <!--Spring Hibernate-->
+        <!--Spring-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -42,11 +40,6 @@
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
 
         <!--jdcb-->
         <dependency>
@@ -55,65 +48,12 @@
             <version>5.1.40</version>
         </dependency>
 
-        <!--jstl-->
-        <dependency>
-            <groupId>javax.servlet.jsp.jstl</groupId>
-            <artifactId>jstl-api</artifactId>
-            <version>${jstl.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>servlet-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>javax.servlet.jsp</groupId>
-                    <artifactId>jsp-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>jstl-impl</artifactId>
-            <version>${jstl.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.servlet</groupId>
-                    <artifactId>servlet-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>javax.servlet.jsp</groupId>
-                    <artifactId>jsp-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
         <!--java commons-->
         <!--
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.1</version>
-        </dependency>
-        -->
-
-        <!-- 不知道是什么，没有部署会出错 -->
-        <dependency>
-            <groupId>com.mchange</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>0.9.2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mchange</groupId>
-            <artifactId>mchange-commons-java</artifactId>
-            <version>0.2.3.4</version>
-        </dependency>
-
-        <!-- json to Object -->
-        <!--
-        <dependency>
-            <groupId>net.sf.json-lib</groupId>
-            <artifactId>json-lib</artifactId>
-            <version>2.4</version>
         </dependency>
         -->
 
