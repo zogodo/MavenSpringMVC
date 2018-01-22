@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created by zogodo on 18-1-19.
  */
-public class TeacherHandlerInterceptor implements HandlerInterceptor
+public class UserHandlerInterceptor implements HandlerInterceptor
 {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception
     {
