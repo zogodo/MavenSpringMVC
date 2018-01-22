@@ -2,15 +2,10 @@ package me.zogodo.ssh.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
-
 import java.util.Date;
 
-@Entity
-@Table(name = "person")
 public class Person
 {
-
     private int id;
     private String name;
     private String phone;
@@ -23,11 +18,6 @@ public class Person
         super();
     }
 
-    @Id
-    @Column(name = "id", nullable = false, unique = true)
-    // @GenericGenerator(name = "generator", strategy = "uuid")
-    // @GeneratedValue(generator = "generator")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getId()
     {
         return id;
@@ -38,7 +28,6 @@ public class Person
         this.id = id;
     }
 
-    @Column(name = "name", nullable = false, length = 32)
     public String getName()
     {
         return name;
@@ -49,7 +38,6 @@ public class Person
         this.name = name;
     }
 
-    @Column(name = "phone", length = 32)
     public String getPhone()
     {
         return phone;
@@ -60,7 +48,6 @@ public class Person
         this.phone = phone;
     }
 
-    @Column(name = "birthday", length = 32)
     public Date getBirthday()
     {
         return birthday;

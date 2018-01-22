@@ -4,16 +4,9 @@ import me.zogodo.ssh.entity.Person;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 /**
  * Created by zogodo on 18-1-22.
  */
-@Repository
-@Transactional
-@Service
 public class PersonServer
 {
     public static PersonServer me = new PersonServer();
